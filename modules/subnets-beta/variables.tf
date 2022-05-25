@@ -13,28 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-variable "project_id" {
-  description = "The ID of the project where subnets will be created"
+     
+   
+variable "name" {
+  type        = "string"
+  description = "Subnet name to create on GCP"
 }
 
-variable "network_name" {
-  description = "The name of the network where subnets will be created"
+variable "vpc" {
+  type        = "string"
+  description = "Direct link to the network"
 }
 
-variable "subnets" {
-  type        = list(map(string))
-  description = "The list of subnets being created"
+variable "subnetwork-region" {
+  type        = "string"
+  default     = ""
+  description = "Zone associated with the subnet. This defaults to the region configured in the provider."
 }
 
-variable "secondary_ranges" {
-  type        = map(list(object({ range_name = string, ip_cidr_range = string })))
-  description = "Secondary ranges that will be used in some of the subnets"
-  default     = {}
-}
-
-variable "module_depends_on" {
-  description = "List of modules or resources this module depends on."
-  type        = list(any)
-  default     = []
+variable "ip_cidr_range" {
+  type        = "string"
+  description = "IP range to book"
 }
